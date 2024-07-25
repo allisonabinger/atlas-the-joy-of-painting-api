@@ -1,5 +1,5 @@
   <h1 align="center">
-  <img src="./bob-ross-banner.jpeg" align="center">
+  <img src="./assets/bob-ross-banner.jpeg" align="center">
    The Joy of Coding</h1>
   <h3 align="center">Exploring ETL with Bob Ross!</h2>
 
@@ -27,4 +27,3 @@ Each Painting has the following:
     NUM_COLORS: The total number of paint colors used in the painting
     COLORS: An array of the colors used in the painting, including the name and hex code value
 ```
-
