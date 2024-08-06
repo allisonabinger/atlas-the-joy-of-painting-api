@@ -27,3 +27,189 @@ Each Painting has the following:
     NUM_COLORS: The total number of paint colors used in the painting
     COLORS: An array of the colors used in the painting, including the name and hex code value
 ```
+
+
+# Usage
+
+This program does not feature a fully functional front-end at this time, but progress is being made. At this point, the sorting can be done by accessing the API with curl requests.
+
+### Start the Server
+In a terminal, navigate to the `server` directory, and run `npm run start-server`. The system will display two messages to verify your server status and connection to the paintings database.
+
+```
+$ npm run start-server
+> files_manager@1.0.0 start-server
+> NODE_NO_WARNINGS=1 nodemon --exec babel-node --presets @babel/preset-env ./server.js
+
+[nodemon] 2.0.22
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `babel-node --presets @babel/preset-env ./server.js`
+Server is running on port 5000
+Connected to MongoDB Atlas
+
+
+```
+### Query the API
+In another terminal, use `curl` (or access using your browser with 0.0.0.0:5000/paintings) to query the API. 
+
+There is only one endpoint, `paintings/`, which without any parameters will give you all 403 paintings in the database.
+
+The projection for each painting will be the Title, Air Date, and Episode Number. This will be adjusted for the front-end.
+
+
+### Sort by Month (Air Date of the Painting)
+
+The API will accept the `months` parameter to query based on the month that the episode aired. The month will need to be in the numerical format (01 for January, 02 for February), or using the accepted abbreviation format (mar for March, apr for April). The query parameter must be `months` regardless if a single month or multiple months are queried.
+
+```
+curl 0.0.0.0:5000/paintings?months=jan
+[
+  {
+    "title": "A Walk in the Woods",
+    "air_date": "01/11/83",
+    "episode": "S01E01"
+  },
+  {
+    "title": "Mount McKinley",
+    "air_date": "01/11/83",
+    "episode": "S01E02"
+  },
+...
+]
+```
+
+### Sort by Color
+
+The API will accept the `colors` parameter to query based on the colors used in the painting. The format for the color requires a `+` symbol for any spaces. The query parameter must be `colors` regardless if a single color or multiple colors are queried.
+
+The following colors are available to query with, please note that these are the original color names and not chosen by the programmer:
+- Black Gesso
+- Bright Red
+- Burnt Umber
+- Cadmium Yellow
+- Dark Sienna
+- Indian Red
+- Indian Yellow
+- Liquid Black
+- Liquid Clear
+- Midnight Black
+- Phthalo Blue
+- Phthalo Green
+- Prussian Blue
+- Sap Green
+- Titanium White
+- Van_Dyke Brown
+- Yellow Ochre
+- Alizarin Crimson
+
+curl 0.0.0.0:5000/paintings?colors=Titanium+White
+```
+[
+  {
+    "title": "Quiet Stream",
+    "air_date": "02/01/83",
+    "episode": "S01E05"
+  },
+  {
+    "title": "Winter Moon",
+    "air_date": "02/08/83",
+    "episode": "S01E06"
+  },
+  {
+    "title": "Autumn Mountains",
+    "air_date": "02/15/83",
+    "episode": "S01E07"
+  },
+  ...
+]
+```
+
+### Sort by Subject Matter
+
+The API will accept the `subjects` parameter to find specific items or subjects painted by Bob. The following subjects are available to query with, replacing the space between words with a `+` is necessary for quering:
+
+<details>
+<summary>Click to Expand</summary>
+<br>
+- Apple Frame
+- Aurora Borealis
+- Barn
+- Beach
+- Boat
+- Bridge
+- Building
+- Bushes
+- Cabin
+- Cactus
+- Circle Frame
+- Cirrus
+- Cliff
+- Clouds
+- Conifer
+- Cumulus
+- Deciduous
+- Diane Andre
+- Dock
+- Double Oval Frame
+- Farm
+- Fence
+- Fire
+- Florida Frame
+- Flowers
+- Fog
+- Framed
+- Grass
+- Guest
+- Half Circle Frame
+- Half Oval Frame
+- Hills
+- Lake
+- Lakes
+- Lighthouse
+- Mill
+- Moon
+- Mountain
+- Mountains
+- Night
+- Ocean
+- Oval Frame
+- Palm Trees
+- Path
+- Person
+- Portrait
+- Rectangle 3D Frame
+- Rectangular Frame
+- River
+- Rocks
+- Seashell Frame
+- Snow
+- Snowy Mountain
+- Split Frame
+- Steve Ross
+- Structure
+- Sun
+- Tomb Frame
+- Tree
+- Trees
+- Triple Frame
+- Waterfall
+- Waves
+- Windmill
+- Window Frame
+- Winter
+- Wood Framed
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
