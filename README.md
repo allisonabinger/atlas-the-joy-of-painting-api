@@ -10,6 +10,8 @@ This project was designed to explore the concept of **ETL (Extract, Transform, L
 
 [The Joy of Painting](https://en.wikipedia.org/wiki/The_Joy_of_Painting) is a television show that ran from 1983 until 1994, and featured the ever-so-tranquil [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) instucting the public on the painting techniques, life lessons, and the beauty of nature. This project started with a hypothetical news station who had gathered data on the paintings and episodes of the show, but needed a better way for their viewers to search and query different details about the content. Starting with CSV and TXT files, **The Joy of Coding** contains a program to query and organize the large amount of data for easier access to viewers. 
 
+With this project, I was instructed to create an API to query and sort paintings, but was given free range on how to store and access the data. I found that I was most familiar with MongoDB and decided to use it as my storage hub, and knowing the simplicity of `express`, I decided that it would be the best quick API to spin up while I focued on my sorting and filtering logic.
+
 # Data Structure
 
 Each entry in the database is unique to the painting that was made. It contains attribtues for the user to search and organize by:
