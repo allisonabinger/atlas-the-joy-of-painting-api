@@ -104,8 +104,9 @@ The following colors are available to query with, please note that these are the
 - Yellow Ochre
 - Alizarin Crimson
 
-curl 0.0.0.0:5000/paintings?colors=Titanium+White
+
 ```
+$ curl 0.0.0.0:5000/paintings?colors=Titanium+White
 [
   {
     "title": "Quiet Stream",
@@ -130,82 +131,81 @@ curl 0.0.0.0:5000/paintings?colors=Titanium+White
 
 The API will accept the `subjects` parameter to find specific items or subjects painted by Bob. The following subjects are available to query with, replacing the space between words with a `+` is necessary for quering:
 
-<details>
-<summary>Click to Expand</summary>
-<br>
-- Apple Frame
-- Aurora Borealis
-- Barn
-- Beach
-- Boat
-- Bridge
-- Building
-- Bushes
-- Cabin
-- Cactus
-- Circle Frame
-- Cirrus
-- Cliff
-- Clouds
-- Conifer
-- Cumulus
-- Deciduous
-- Diane Andre
-- Dock
-- Double Oval Frame
-- Farm
-- Fence
-- Fire
-- Florida Frame
-- Flowers
-- Fog
-- Framed
-- Grass
-- Guest
-- Half Circle Frame
-- Half Oval Frame
-- Hills
-- Lake
-- Lakes
-- Lighthouse
-- Mill
-- Moon
-- Mountain
-- Mountains
-- Night
-- Ocean
-- Oval Frame
-- Palm Trees
-- Path
-- Person
-- Portrait
-- Rectangle 3D Frame
-- Rectangular Frame
-- River
-- Rocks
-- Seashell Frame
-- Snow
-- Snowy Mountain
-- Split Frame
-- Steve Ross
-- Structure
-- Sun
-- Tomb Frame
-- Tree
-- Trees
-- Triple Frame
-- Waterfall
-- Waves
-- Windmill
-- Window Frame
-- Winter
-- Wood Framed
-</details>
+|                    |                    |                   |                 |
+|--------------------|--------------------|-------------------|-----------------|
+| Apple Frame        | Aurora Borealis    | Barn              | Beach           |
+| Boat               | Bridge             | Building          | Bushes          |
+| Cabin              | Cactus             | Circle Frame      | Cirrus          |
+| Cliff              | Clouds             | Conifer           | Cumulus         |
+| Deciduous          | Diane Andre        | Dock              | Double Oval Frame|
+| Farm               | Fence              | Fire              | Florida Frame   |
+| Flowers            | Fog                | Framed            | Grass           |
+| Guest              | Half Circle Frame  | Half Oval Frame   | Hills           |
+| Lake               | Lakes              | Lighthouse        | Mill            |
+| Moon               | Mountain           | Mountains         | Night           |
+| Ocean              | Oval Frame         | Palm Trees        | Path            |
+| Person             | Portrait           | Rectangle 3D Frame| Rectangular Frame|
+| River              | Rocks              | Seashell Frame    | Snow            |
+| Snowy Mountain     | Split Frame        | Steve Ross        | Structure       |
+| Sun                | Tomb Frame         | Tree              | Trees           |
+| Triple Frame       | Waterfall          | Waves             | Windmill        |
+| Window Frame       | Winter             | Wood Framed       |                 |
 
 
+Here is an example of querying with the subject matter:
 
+```
+$ curl 0.0.0.0:5000/paintings?subjects=River
+[
+  {
+    "title": "Quiet Stream",
+    "air_date": "02/01/83",
+    "episode": "S01E05"
+  },
+  {
+    "title": "Lazy River",
+    "air_date": "11/02/83",
+    "episode": "S02E10"
+  },
+  {
+    "title": "Black Waterfall",
+    "air_date": "11/09/83",
+    "episode": "S02E11"
+  },
+  {
+    "title": "Bubbling Stream",
+    "air_date": "01/18/84",
+    "episode": "S03E03"
+  },
+...
+]
+```
 
+### Querying with Multiple Filters
 
+Parameters can be combined using the `&` symbol between them. Here is an exmaple of a very specific search:
+
+```
+$ curl 0.0.0.0:5000/paintings?months=may&colors=Titanium+White&subjects=tree
+[
+  {
+    "title": "Blue River",
+    "air_date": "05/01/85",
+    "episode": "S06E01"
+  },
+  {
+    "title": "Nature's Edge",
+    "air_date": "05/08/85",
+    "episode": "S06E02"
+  },
+...
+]
+```
+
+#### Please let me know of any additional features or bugs that should be brought to my attention!
+
+---
+This README was made with :heart: by Allison Binger, student at Atlas School Tulsa. Find me on [GitHub](https://github.com/allisonabinger) or [LinkedIn](https://linkedin.com/in/allisonbinger)! :smile_cat:
 
 
 
